@@ -1,0 +1,47 @@
+<?php
+include_once $_SERVER['DOCUMENT_ROOT'] .'/converter/converter/index.php';
+$buf = $_POST['number'];
+$converter = new Converter($buf);
+?>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Калькулятор</title>
+        <style>
+            .text {
+                text-align:  center;
+            }
+            .menu {
+                display:flex;
+                max-width: 100%;
+                height: auto
+            }
+            .frame{
+                display:inline-block;
+                width: 50%
+            }
+            #right {
+                text-align: right;
+            }
+            #block{
+                padding-left: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="text">
+            <h2>Калькулятор позволяющий конвертировать числа из римских в арабские и наоборот</h2>
+        </div>
+        <div class="menu">
+            <div class="frame" id="right">
+                <form action="" method="post">
+                    <input type="text" name="number" placeholder="Введите число" value="<?php echo $buf ?>" size="30" />
+                    <input name="submit" type="submit" value="Конвертировать =>" />
+                </form>
+            </div>
+            <div class="frame" id="block">
+                <input type="text" name="conv" value="<?php $converter->valid(); ?>" size="30" />
+            </div>
+        <div>
+    </body>
+</html>
